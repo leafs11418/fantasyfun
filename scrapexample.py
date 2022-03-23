@@ -16,7 +16,7 @@ for page in range(1,18):
     for item in sts:
         g={}
         g['Week']=page
-        g['Player Name']=item.find_all("a", {'class':'player-name'})[0].text
+        g['PlayerName']=item.find_all("a", {'class':'player-name'})[0].text
         g['Completions']=item.find_all('td', {'class':'center'})[0].text
         g['Passing Attempts']=item.find_all('td', {'class':'center'})[1].text
         g['Completion %']=item.find_all('td', {'class':'center'})[2].text
@@ -49,14 +49,14 @@ df.loc[df['Rushing Yds'] >= 200, 'Fantasy Scoring'] = df['Fantasy Scoring'] + 10
 df.replace(0, np.nan, inplace=True)
 
 #Calculate numbers
-Number_games = df.groupby(['Player Name'])['Fantasy Scoring'].count()
-Total_Fantasy = df.groupby(['Player Name'])['Fantasy Scoring'].sum()
-Avg_Fantasy = df.groupby(['Player Name'])['Fantasy Scoring'].mean()
-STD_Fantasy = df.groupby(['Player Name'])['Fantasy Scoring'].std()
-min_Fantasy = df.groupby(['Player Name'])['Fantasy Scoring'].min()
-max_Fantasy = df.groupby(['Player Name'])['Fantasy Scoring'].max()
-Quartile1 = df.groupby(['Player Name'])['Fantasy Scoring'].quantile(.25)
-Quartile3 = df.groupby(['Player Name'])['Fantasy Scoring'].quantile(.75)
+Number_games = df.groupby(['PlayerName'])['Fantasy Scoring'].count()
+Total_Fantasy = df.groupby(['PlayerName'])['Fantasy Scoring'].sum()
+Avg_Fantasy = df.groupby(['PlayerName'])['Fantasy Scoring'].mean()
+STD_Fantasy = df.groupby(['PlayerName'])['Fantasy Scoring'].std()
+min_Fantasy = df.groupby(['PlayerName'])['Fantasy Scoring'].min()
+max_Fantasy = df.groupby(['PlayerName'])['Fantasy Scoring'].max()
+Quartile1 = df.groupby(['PlayerName'])['Fantasy Scoring'].quantile(.25)
+Quartile3 = df.groupby(['PlayerName'])['Fantasy Scoring'].quantile(.75)
 IQR = Quartile3 - Quartile1
 
 #create new dataframe for cumulative numbers from above 
