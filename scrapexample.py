@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import pandas 
 import numpy as np
+import time
 
 #scrape pages for weeks 1-17
 search=[]
@@ -30,6 +31,7 @@ for page in range(1,18):
         g['Rushing TDs']=item.find_all('td', {'class':'center'})[10].text
         g['Fumbles']=item.find_all('td', {'class':'center'})[11].text
         search.append(g)
+    time.sleep(5)
 
 #create Dataframe from 'search' data
 df=pandas.DataFrame(search)
