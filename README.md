@@ -11,3 +11,5 @@ Steps:
 Sample code for the intial scrape and application of functions included in scrapexample.py
 I played around with Bokeh to create some plots from these data points (website folder). 
 Ranking lists (csv) are in the "ranks" folder. 
+
+I also played around with html/css to display this data. Getting this to work on github pages is a work in progress. 
